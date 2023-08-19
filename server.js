@@ -15,6 +15,7 @@ app.get('/',(req,res)=>{
 
 app.post('/sendEmail', (req, res) => {
     const { name ,email,message} = req.body ;
+    console.log(name)
     const transporter = nodemailer.createTransport({
       service: 'gmail', 
       auth: {
