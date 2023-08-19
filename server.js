@@ -9,18 +9,19 @@ const PORT =process.env.PORT || 3000;
 dotenv.config()
 app.use(cors())
 app.use(express.json())
+
 app.get('/',(req,res)=>{
     res.send('Hello World')
 })
 
 app.post('/sendEmail', (req, res) => {
     const { name ,email,message} = req.body ;
-    console.log(name)
     const transporter = nodemailer.createTransport({
       service: 'gmail', 
       auth: {
         user: 'saad123mn123@gmail.com', 
-        pass: process.env.GPASS   
+        pass: process.env.GPASS,
+        clientSecret:process.env.clientSecret
       }
     });
     const mailOptions = {
